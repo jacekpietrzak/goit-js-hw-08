@@ -2,18 +2,9 @@ const throttle = require('lodash.throttle');
 const iframe = document.querySelector('iframe');
 const player = new Vimeo.Player(iframe);
 
-// player.on('play', function () {
-//   console.log('played video!');
-// });
-
-// player.getVideoTitle().then(function (title) {
-//   console.log('title:', title);
-// });
-
 player.on(
   'timeupdate',
   throttle(function (time) {
-    // console.log('time', time.seconds);
     localStorage.setItem('videoplayer-current-time', time.seconds);
   }, 1000)
 );
